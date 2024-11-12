@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Multicolor Dots</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #90f1ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f55, #55f, #5f5);
+            animation: moveUp 5s linear infinite;
+        }
+
+        @keyframes moveUp {
+            0% {
+                transform: translateY(100vh);
+            }
+            100% {
+                transform: translateY(-10vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const createDot = () => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.style.left = `${Math.random() * 100}vw`;
+            document.body.appendChild(dot);
+
+            setTimeout(() => {
+                dot.remove();
+            }, 5000);
+        };
+
+        setInterval(createDot, 200);
+    </script>
+</body>
+</html>
